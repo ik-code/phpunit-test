@@ -19,12 +19,13 @@ class UserTest extends TestCase
 
     /**
      * @param $age
+     * @param $age2
      * @dataProvider userProvider
      */
-    public function testAge($age)
+    public function testAge($age, $age2)
     {
         /// 33 == $this->user->getAge()
-        $this->assertEquals($age, $this->user->getAge());
+        $this->assertEquals($age, $age2);
 
         /// 33 === $this->user->getAge() ///  $this->assertSame('33', $this->user->getAge()); /// will be error
         //$this->assertSame($age, $this->user->getAge());
@@ -33,9 +34,9 @@ class UserTest extends TestCase
     public function userProvider()
     {
         return [
-            [1],
-            [1],
-            [33],
+          "one" => [1, 2],
+          "two" => [2, 2],
+          "correct" => [33, 2],
         ];
     }
 
