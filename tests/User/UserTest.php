@@ -53,11 +53,35 @@ class UserTest extends TestCase
 
     public function testEmailException()
     {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionCode(10);
-        $this->expectExceptionMessage('Error email');
+
+        //  $this->expectException(\PHPUnit\Framework\Error\Error::class); is deprecated
+        // and will be removed in PHPUnit 10
+        // use expectError() instead
+        $this->expectError();
+
+        include "somefilenotexist.php";
+
+        //$this->expectException(InvalidArgumentException::class);
+        //$this->expectExceptionCode(10);
+        //$this->expectExceptionMessage('Error email');
         //$this->expectExceptionMessageRegExp();//removed in PHPUnit 9
-        $this->user->getEmail();
+        //$this->user->getEmail();
     }
+
+//    public function testAddToFile()
+//    {
+//        $this->assertFalse(@$this->addToFile("/is-not-writeable/someFile.txt", "data to save"));
+//    }
+
+//    public function addToFile($path, $data)
+//    {
+//        $file = fopen($path, 'w');
+//
+//        /// to do some logic...
+//
+//        if ($file == false){
+//            return false;
+//        }
+//    }
 
 }
