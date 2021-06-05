@@ -3,6 +3,7 @@
 
 namespace App\Models;
 
+use InvalidArgumentException;
 
 class User
 {
@@ -48,6 +49,9 @@ class User
      */
     public function getEmail()
     {
+        if (empty($this->email)){
+            throw new InvalidArgumentException('Error email', 10);
+        }
         return $this->email;
     }
 
